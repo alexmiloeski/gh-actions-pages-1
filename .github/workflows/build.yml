@@ -3,11 +3,13 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: step1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Step 1
         run: pwd
-      - name: step2
+      - name: Step 2
         run: ls -lha ..
-      - name: step3
+      - name: Step 3
         run: ls -lha ../..
-      - name: step4
+      - name: Step 4
         run: ls -lha ../../..
