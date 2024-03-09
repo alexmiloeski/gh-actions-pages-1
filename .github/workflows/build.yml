@@ -67,7 +67,8 @@ jobs:
       - name: Deploy pages
         id: deployment
         uses: actions/deploy-pages@v4
-        artifact_name: my-art
+        with:
+          artifact_name: my-art
 
       - name: List dir
         run: ls -lha .
