@@ -61,12 +61,13 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
+          name: my-art
           path: .
 
       - name: Deploy pages
         id: deployment
         uses: actions/deploy-pages@v4
+        artifact_name: my-art
 
       - name: List dir
         run: ls -lha .
