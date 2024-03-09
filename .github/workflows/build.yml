@@ -51,7 +51,7 @@ jobs:
 
     # Deploy to the github-pages environment
     environment:
-      name: my-pages
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
@@ -61,7 +61,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: my-pages
+          name: github-pages
           path: .
 
       - name: Deploy pages
