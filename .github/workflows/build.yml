@@ -12,13 +12,19 @@ jobs:
       - name: Build and Deploy to Staging
         run: echo "helo from staging"
 
-      # - name: Prnt env var
-      #   run: echo "elo1 ${{ ENV_VAR_ONE_1 }}"
-      #   env:
-      #     ENV_VAR_ONE_1: ${{ vars.ENV_VAR_ONE }}
+      - name: Prnt env var1
+        run: echo "elo1 $ENV_VAR_ONE_1"
+        env:
+          ENV_VAR_ONE_1: ${{ vars.ENV_VAR_ONE }}
 
-      - name: Prnt env var
+      - name: Prnt env var2
+        run: echo "elo2 ${{ vars.ENV_VAR_ONE }}"
+
+      - name: Prnt env var3
         run: echo "The env var is $vars.ENV_VAR_ONE"
+
+      - name: Prnt env var4
+        run: echo "The env var is $ENV_VAR_ONE"
 
   # deploy-production:
   #   runs-on: ubuntu-latest
