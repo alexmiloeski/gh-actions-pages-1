@@ -1,21 +1,52 @@
 on: push
 
 jobs:
-  job1:
+  deploy-staging:
     runs-on: ubuntu-latest
 
+    environment:
+      name: staging
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Build and Deploy to Staging
+        run: echo "helo from staging"
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: my-pages
-          path: .
+  deploy-production:
+    runs-on: ubuntu-latest
 
-      - name: Deploy pages
-        uses: actions/deploy-pages@v4
+    environment:
+      name: production
 
-      - name: List dir
-        run: ls -lha .
+    steps:
+      - name: Build and Deploy to Staging
+        run: echo "helo from staging"
+# jobs:
+#   job1:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           name: my-pages
+#           path: .
+
+#       - name: Deploy pages
+#         uses: actions/deploy-pages@v4
+
+#       - name: List dir
+#         run: ls -lha .
+
+# job2:
+#   runs-on: ubuntu-latest
+
+#   steps:
+#     - name: Set Output
+#       id: set_output
+#       run: echo "::set-output name=my_output::some_value"
+
+#     - name: Use Output
+#       run: echo "The output is ${{ steps.set_output.outputs.my_output }}"
