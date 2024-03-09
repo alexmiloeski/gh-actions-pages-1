@@ -58,8 +58,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # - name: Upload pages artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     name: my-art
+      #     path: .
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: my-art
           path: .
