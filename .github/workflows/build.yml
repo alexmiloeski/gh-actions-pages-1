@@ -6,6 +6,7 @@ jobs:
 
     environment:
       name: staging
+      url: google.com
 
     steps:
       - name: Build and Deploy to Staging
@@ -16,6 +17,7 @@ jobs:
 
     environment:
       name: production
+      sth: else
 
     steps:
       - name: Build and Deploy to Staging
