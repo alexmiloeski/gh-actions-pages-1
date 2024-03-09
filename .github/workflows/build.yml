@@ -6,8 +6,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Upload artifact
-        uses: actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact@v3
       - name: Deploy pages
-        run: actions/deploy-pages
+        uses: actions/deploy-pages@v4
       - name: List dir
         run: ls -lha .
