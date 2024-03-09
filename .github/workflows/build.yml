@@ -1,34 +1,34 @@
 on: push
 
 jobs:
-  deploy-staging:
-    runs-on: ubuntu-latest
+  # deploy-staging:
+  #   runs-on: ubuntu-latest
 
-    environment:
-      name: test_env
-      url: https://google.com
+  #   environment:
+  #     name: test_env
+  #     url: https://google.com
 
-    steps:
-      - name: Build and Deploy to Staging
-        run: echo "helo from staging"
+  #   steps:
+  #     - name: Build and Deploy to Staging
+  #       run: echo "helo from staging"
 
-      #  YES !
-      - name: Prnt env var1
-        run: echo "elo1 $ENV_VAR_ONE_1"
-        env:
-          ENV_VAR_ONE_1: ${{ vars.ENV_VAR_ONE }}
+  #     #  YES !
+  #     - name: Prnt env var1
+  #       run: echo "elo1 $ENV_VAR_ONE_1"
+  #       env:
+  #         ENV_VAR_ONE_1: ${{ vars.ENV_VAR_ONE }}
 
-      #  YES !
-      - name: Prnt env var2
-        run: echo "elo2 ${{ vars.ENV_VAR_ONE }}"
+  #     #  YES !
+  #     - name: Prnt env var2
+  #       run: echo "elo2 ${{ vars.ENV_VAR_ONE }}"
 
-      - name: Prnt secret1
-        run: echo "elo1 $MY_SEC"
-        env:
-          MY_SEC: ${{ secrets.SEC_ONE }}
+  #     - name: Prnt secret1
+  #       run: echo "elo1 $MY_SEC"
+  #       env:
+  #         MY_SEC: ${{ secrets.SEC_ONE }}
 
-      - name: Prnt secret2
-        run: echo "elo2 ${{ secrets.SEC_ONE }}"
+  #     - name: Prnt secret2
+  #       run: echo "elo2 ${{ secrets.SEC_ONE }}"
 
   # deploy-production:
   #   runs-on: ubuntu-latest
@@ -40,26 +40,36 @@ jobs:
   #   steps:
   #     - name: Build and Deploy to Staging
   #       run: echo "helo from staging"
-# jobs:
-#   job1:
-#     runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
+  job1:
+    runs-on: ubuntu-latest
 
-#       - name: Upload artifact
-#         uses: actions/upload-pages-artifact@v3
-#         with:
-#           name: my-pages
-#           path: .
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
 
-#       - name: Deploy pages
-#         uses: actions/deploy-pages@v4
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-#       - name: List dir
-#         run: ls -lha .
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: my-pages
+          path: .
+
+      - name: Deploy pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: List dir
+        run: ls -lha .
 # job2:
 #   runs-on: ubuntu-latest
 
