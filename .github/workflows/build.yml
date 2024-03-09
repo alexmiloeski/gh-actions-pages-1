@@ -5,9 +5,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Step 1
-        run: pwd
-      - name: Step 2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact
+      - name: Deploy pages
+        run: actions/deploy-pages
+      - name: List dir
         run: ls -lha .
-      - name: Step 3
-        run: ls -lha ..
