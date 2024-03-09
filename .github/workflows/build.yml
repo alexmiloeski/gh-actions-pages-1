@@ -5,23 +5,31 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: staging
-      url: google.com
+      name: test_env
+      url: https://google.com
 
     steps:
       - name: Build and Deploy to Staging
         run: echo "helo from staging"
 
-  deploy-production:
-    runs-on: ubuntu-latest
+      - name: Prnt env var
+        run: echo "{{ $ENV_VAR_ONE_1 }}"
+        env:
+          ENV_VAR_ONE_1: ${{ vars.ENV_VAR_ONE }}
 
-    environment:
-      name: production
-      url: https://yahoo.com
+      - name: Prnt env var
+        run: echo "${{ vars.ENV_VAR_ONE }}"
 
-    steps:
-      - name: Build and Deploy to Staging
-        run: echo "helo from staging"
+  # deploy-production:
+  #   runs-on: ubuntu-latest
+
+  #   environment:
+  #     name: production
+  #     url: https://yahoo.com
+
+  #   steps:
+  #     - name: Build and Deploy to Staging
+  #       run: echo "helo from staging"
 # jobs:
 #   job1:
 #     runs-on: ubuntu-latest
