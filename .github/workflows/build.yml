@@ -12,7 +12,7 @@ jobs:
     # Deploy to the github-pages environment
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy_pages.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -37,7 +37,7 @@ jobs:
       #     path: .
 
       - name: Deploy pages
-        id: deployment
+        id: deploy_pages
         uses: actions/deploy-pages@v4
         with:
           artifact_name: my-art
