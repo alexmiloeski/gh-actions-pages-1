@@ -18,8 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: npm install
+        run: npm ci
+
       - name: Build react app
-        run: npm ru build
+        run: npm run build
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
