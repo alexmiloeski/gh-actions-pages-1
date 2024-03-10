@@ -8,7 +8,7 @@ import { Help } from "./components/Help.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/gh-actions-pages-1/">
       <App />
       <Routes>
         <Route path="/" element={<Home />} />
