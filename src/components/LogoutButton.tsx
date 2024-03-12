@@ -7,7 +7,12 @@ const LogoutButton = () => {
     <button
       onClick={() =>
         logout({
-          logoutParams: { returnTo: window.location.origin + "/another/thing" },
+          logoutParams: {
+            returnTo:
+              window.location.origin +
+              import.meta.env.VITE_BASE_PATH +
+              "/another/thing",
+          },
         })
       }
     >

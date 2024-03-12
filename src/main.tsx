@@ -15,7 +15,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       clientId="SCDiQPdlg80P9KTOL6w8JWefvOg32zo7"
       authorizationParams={{
         // redirect_uri: window.location.origin,
-        redirect_uri: window.location.origin + "/sth/else",
+        redirect_uri:
+          window.location.origin + import.meta.env.VITE_BASE_PATH + "/sth/else",
       }}
     >
       <Router>
