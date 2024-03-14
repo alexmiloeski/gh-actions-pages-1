@@ -23,8 +23,10 @@ jobs:
 
       - name: Build react app
         env:
-          THIRD: "thirdValBro"
           VITE_BASE_PATH: ${{ vars.BASE_PATH }}
+          VITE_API_BASE_URL: ${{ vars.API_BASE_URL }}
+          VITE_AUTH0_CLIENT_ID: ${{ vars.AUTH0_CLIENT_ID }}
+          VITE_AUTH0_TENANT_DOMAIN: ${{ vars.AUTH0_TENANT_DOMAIN }}
         run: npm run build
 
       - name: Upload pages artifact
