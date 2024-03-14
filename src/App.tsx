@@ -5,7 +5,7 @@ import { NavElement } from "./components/NavElement";
 import "./App.css";
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   return (
     <>
@@ -13,7 +13,9 @@ function App() {
       <div>
         {<NavElement path="/" label="Home" />}
         {<NavElement path="/help" label="Help" />}
-        {isAuthenticated ? (
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : isAuthenticated ? (
           <>
             <LogoutButton />
             <br />
