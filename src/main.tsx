@@ -17,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         audience: import.meta.env.VITE_API_BASE_URL,
         redirect_uri:
           window.location.origin + import.meta.env.VITE_BASE_PATH + "/sth/else",
+        scope: "openid profile email read:custom_one",
       }}
     >
       <Router>

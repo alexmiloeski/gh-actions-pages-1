@@ -1,11 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
-import { getMoreFromServer } from "../api";
+import { getCustomOneFromServer, getMoreFromServer } from "../api";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState("");
   const [theMore, setTheMore] = useState("");
+  const [theCustomOne, setTheCustomOne] = useState("");
 
   useEffect(() => {
     getAccessTokenSilently()
@@ -28,11 +29,22 @@ const Profile = () => {
       });
   };
 
+  const getCustomOne = () => {
+    getCustomOneFromServer(accessToken)
+      .then((rez) => {
+        setTheCustomOne(rez);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
   return isLoading ? (
     <div>Loading ...</div>
   ) : (
     isAuthenticated && (
       <div>
+        <br />
         {user && (
           <>
             <img src={user.picture} alt={user.name} />
@@ -40,6 +52,8 @@ const Profile = () => {
             <p>{user.email}</p>
             <button onClick={getMore}>Get more from server</button>
             {theMore && <p>The more: {theMore}</p>}
+            <button onClick={getCustomOne}>Get custom one from server</button>
+            {theCustomOne && <p>The more: {theCustomOne}</p>}
           </>
         )}
       </div>
