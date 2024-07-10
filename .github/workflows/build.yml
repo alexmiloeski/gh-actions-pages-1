@@ -5,6 +5,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
 
+    environment:
+      name: test_env
+
     steps:
       - name: yolo
         #env:
