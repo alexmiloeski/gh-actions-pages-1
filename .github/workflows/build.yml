@@ -9,7 +9,10 @@ jobs:
       name: test_env
 
     steps:
-      - name: yolo
+      - name: print var
         #env:
           #VITE_BASE_PATH: ${{ vars.ENV_VAR_ONE }}
         run: echo "vars.ENV_VAR_ONE = [${{ vars.ENV_VAR_ONE }}]"
+        
+      - name: print secret
+        run: echo "secrets.SEC_ONE = [${{ secrets.SEC_ONE }}]"
