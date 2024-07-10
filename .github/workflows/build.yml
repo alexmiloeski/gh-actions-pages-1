@@ -1,61 +1,12 @@
-on: push
+on:
+  workflow_dispatch:
 
 jobs:
   job1:
     runs-on: ubuntu-latest
 
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy_pages.outputs.page_url }}
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: npm install
-        run: npm ci
-
-      - name: Build react app
-        env:
-          VITE_BASE_PATH: ${{ vars.BASE_PATH }}
-          VITE_API_BASE_URL: ${{ vars.API_BASE_URL }}
-          VITE_AUTH0_CLIENT_ID: ${{ vars.AUTH0_CLIENT_ID }}
-          VITE_AUTH0_TENANT_DOMAIN: ${{ vars.AUTH0_TENANT_DOMAIN }}
-        run: npm run build
-
-      - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          name: my-art
-          path: dist/
-
-      # - name: Upload artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: my-art
-      #     path: .
-
-      - name: Deploy pages
-        id: deploy_pages
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: my-art
-
-      - name: List dir
-        run: ls -lha .
-# job2:
-#   runs-on: ubuntu-latest
-
-#   steps:
-#     - name: Set Output
-#       id: set_output
-#       run: echo "::set-output name=my_output::some_value"
-
-#     - name: Use Output
-#       run: echo "The output is ${{ steps.set_output.outputs.my_output }}"
+      - name: yolo
+        #env:
+          #VITE_BASE_PATH: ${{ vars.ENV_VAR_ONE }}
+        run: echo "vars.ENV_VAR_ONE = [${{ vars.ENV_VAR_ONE }}]"
